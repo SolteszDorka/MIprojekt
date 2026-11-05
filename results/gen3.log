@@ -1,0 +1,36 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793827219.311791  472446 instrument.cc:563] Metric with name 'grpc.resource_quota.calls_dropped' registered more than once. Ignoring later registration.
+E0000 00:00:1793827219.311839  472446 instrument.cc:563] Metric with name 'grpc.resource_quota.calls_rejected' registered more than once. Ignoring later registration.
+E0000 00:00:1793827219.311841  472446 instrument.cc:563] Metric with name 'grpc.resource_quota.connections_dropped' registered more than once. Ignoring later registration.
+E0000 00:00:1793827219.311842  472446 instrument.cc:563] Metric with name 'grpc.resource_quota.instantaneous_memory_pressure' registered more than once. Ignoring later registration.
+E0000 00:00:1793827219.311843  472446 instrument.cc:563] Metric with name 'grpc.resource_quota.memory_pressure_control_value' registered more than once. Ignoring later registration.
+generálás kész B0_keresés_nélkül
+generálás kész S1_bm25
+generálás kész S3_hibrid
+generálás kész S4_hibrid+rerank
+Traceback (most recent call last):
+  File "/home/ohep/dorka_beadando/kiberjog-rag/src/run_eval.py", line 119, in <module>
+    {"retr": retrieval, "gen": gen, "judge": judge}[st]()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/ohep/dorka_beadando/kiberjog-rag/src/run_eval.py", line 55, in gen
+    for a in ex.map(one, todo):
+             ~~~~~~^^^^^^^^^^^
+  File "/home/ohep/miniconda3/lib/python3.13/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/ohep/miniconda3/lib/python3.13/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "/home/ohep/miniconda3/lib/python3.13/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/ohep/miniconda3/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/ohep/miniconda3/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/ohep/dorka_beadando/kiberjog-rag/src/run_eval.py", line 52, in one
+    return dict(id=t["id"], valasz=generate(t["kerdes"], hits), kontextus=[label(h) for h in hits] if hits else [])
+                                   ~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/ohep/dorka_beadando/kiberjog-rag/src/rag.py", line 131, in generate
+    raise RuntimeError(str(last)[:300])
+RuntimeError: {'error': {'code': 400, 'message': 'request (15143 tokens) exceeds the available context size (11008 tokens), try increasing it', 'type': 'exceed_context_size_error', 'n_prompt_tokens': 15143, 'n_ctx': 11008}}

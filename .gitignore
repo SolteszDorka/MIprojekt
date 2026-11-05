@@ -1,0 +1,7 @@
+models/
+data/emb_*.npy
+.env
+__pycache__/
+docs/*.pdf
+docs/*.docx
+docs/*.pptx

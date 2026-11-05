@@ -1,0 +1,10 @@
+beautifulsoup4
+lxml
+qdrant-client
+sentence-transformers
+PyStemmer
+requests
+numpy
+matplotlib
+reportlab
+pillow
